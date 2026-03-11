@@ -9,7 +9,7 @@
     <style>
         :root { --accent: #c5a059; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background: #000; color: #fff; line-height: 1.4; }
+        body { font-family: 'Montserrat', sans-serif; background: #000; color: #fff; line-height: 1.4; overflow-x: hidden; }
         .header { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; background: rgba(0,0,0,0.9); border-radius: 50px; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border: 1px solid #333; backdrop-filter: blur(10px); }
         .logo h1 { font-size: 1.4rem; font-weight: 900; letter-spacing: 2px; }
         .icons { display: flex; gap: 15px; }
@@ -18,11 +18,23 @@
         .hero h1 { font-size: clamp(2rem, 6vw, 4rem); font-weight: 900; text-transform: uppercase; max-width: 900px; margin-bottom: 20px; }
         .btn { padding: 18px 45px; border-radius: 40px; text-decoration: none; font-weight: 700; text-transform: uppercase; transition: 0.3s; cursor: pointer; display: inline-block; }
         .btn-white { background: #fff; color: #000; }
-        .btn-outline { border: 2px solid #fff; color: #fff; }
-        .special { padding: 100px 5%; background: #0a0a0a; border-radius: 50px 50px 0 0; margin-top: -50px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .gallery { padding: 100px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .gallery img { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .btn-outline { border: 2px solid #fff; color: #fff; margin-left: 10px; }
+        .section { padding: 100px 5%; background: #0a0a0a; }
+        .section-title { font-size: 2.5rem; font-weight: 900; text-align: center; margin-bottom: 50px; text-transform: uppercase; color: var(--accent); }
+        .tariffs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .tariff-card { background: #111; padding: 40px; border-radius: 30px; border: 1px solid #222; transition: 0.3s; }
+        .tariff-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+        .tariff-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .tariff-card .price { font-size: 2rem; font-weight: 900; margin-bottom: 20px; color: var(--accent); }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .portfolio-item { position: relative; border-radius: 20px; overflow: hidden; height: 400px; }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .portfolio-item:hover img { transform: scale(1.1); }
+        .portfolio-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); }
+        .contact { background: #000; text-align: center; }
+        .contact form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        .contact input { padding: 15px; border-radius: 10px; border: 1px solid #333; background: #111; color: #fff; }
+        footer { padding: 50px; text-align: center; border-top: 1px solid #222; }
     </style>
 </head>
 <body>
@@ -34,28 +46,75 @@
             <a href="#"><i class="fas fa-bars"></i></a>
         </div>
     </header>
+
     <section class="hero">
         <div class="hero-content">
             <h1>Территория стиля и минимализма для дома и бизнеса</h1>
             <div style="margin-top: 40px;">
-                <a href="#projects" class="btn btn-white">Работы</a>
-                <a href="#" class="btn btn-outline">Заявка</a>
+                <a href="#portfolio" class="btn btn-white">Работы</a>
+                <a href="#contact" class="btn btn-outline">Заявка</a>
             </div>
         </div>
     </section>
-    <section class="special">
-        <div class="grid">
-            <div>
-                <h2 style="color:var(--accent); font-size: 3rem; margin-bottom: 20px;">БЫСТРЫЙ СТАРТ</h2>
-                <p style="font-size: 1.5rem; margin-bottom: 20px;">Черновая отделка «под ключ»</p>
-                <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 30px;">13 500 ₽/м²</div>
+
+    <section class="section" id="tariffs">
+        <h2 class="section-title">Тарифные планы</h2>
+        <div class="tariffs-grid">
+            <div class="tariff-card">
+                <h3>Технический дизайн</h3>
+                <div class="price">от 4 500 ₽/м²</div>
+                <p>Базовый набор чертежей для начала работ.</p>
             </div>
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" style="width:100%; border-radius: 30px;">
+            <div class="tariff-card">
+                <h3>Полный дизайн-проект</h3>
+                <div class="price">от 6 500 ₽/м²</div>
+                <p>3D визуализация и детальные спецификации.</p>
+            </div>
+            <div class="tariff-card" style="border-color: var(--accent);">
+                <h3>Быстрый старт</h3>
+                <div class="price">13 500 ₽/м²</div>
+                <p>Черновая отделка «под ключ» — идеальный выбор для новоселов.</p>
+            </div>
+            <div class="tariff-card">
+                <h3>Бетон Комфорт</h3>
+                <div class="price">от 26 500 ₽/м²</div>
+                <p>Полный цикл отделки с качественными материалами.</p>
+            </div>
         </div>
     </section>
-    <section id="projects" class="gallery">
-        <img src="https://images.unsplash.com/photo-1616486341353-37521d113470?w=800">
-        <img src="https://images.unsplash.com/photo-1616137422495-1e99c51207f7?w=800">
+    <section class="section" id="portfolio" style="background: #000;">
+        <h2 class="section-title">Наши работы</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="ЖК Манифест">
+                <div class="portfolio-info"><h3>ЖК Манифест</h3></div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800" alt="Поклонная 9">
+                <div class="portfolio-info"><h3>Поклонная 9</h3></div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1616486341353-37521d113470?w=800" alt="Румянцево">
+                <div class="portfolio-info"><h3>Румянцево</h3></div>
+            </div>
+        </div>
     </section>
+
+    <section class="section contact" id="contact">
+        <h2 class="section-title">Оставить заявку</h2>
+        <form>
+            <input type="text" placeholder="Ваше имя" required>
+            <input type="tel" placeholder="+7 (___) ___-__-__" required>
+            <button type="submit" class="btn btn-white">Отправить</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2026 4 РЕШЕНИЯ. Все права защищены.</p>
+        <div class="icons" style="justify-content: center; margin-top: 20px;">
+            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+            <a href="#"><i class="fas fa-phone"></i></a>
+        </div>
+    </footer>
 </body>
 </html>
