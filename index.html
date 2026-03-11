@@ -10,206 +10,125 @@
         body { font-family: 'Montserrat', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
         
         .header-fixed {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            width: 95%; max-width: 1200px; height: 100px;
-            background: rgba(18, 18, 18, 0.95); border-radius: 50px;
+            position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
+            width: 95%; max-width: 1200px; height: 110px;
+            background: rgba(18, 18, 18, 0.95); border-radius: 100px;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 40px; z-index: 1000; border: 1px solid rgba(255,255,255,0.1);
+            padding: 0 50px; z-index: 1000; border: 1px solid rgba(255,255,255,0.1);
         }
-        .logo img { height: 45px; }
-        .header-icons { display: flex; gap: 15px; }
+        .logo img { height: 50px; }
+        .header-icons { display: flex; gap: 20px; }
         .icon-circle {
-            width: 55px; height: 55px; background: #fff; border-radius: 50%;
+            width: 65px; height: 65px; background: #fff; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             transition: 0.3s; cursor: pointer; text-decoration: none;
         }
         .icon-circle:hover { transform: scale(1.1); }
-        .icon-circle svg { width: 25px; height: 25px; fill: #000; }
-
+        .icon-circle svg { width: 30px; height: 30px; fill: #000; }
+        
         .hero {
-            height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://4solutions.ru/images/tild3133-3162-4265-b131-316538393561__---1.jpg') center/cover;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://4solutions.ru/images/tild3133-3162-4265-b131-316538393561__---1.jpg') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 0 5%;
         }
-        .hero h1 { font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px; max-width: 900px; text-transform: uppercase; }
-        .hero p { font-size: 1.1rem; max-width: 600px; margin-bottom: 40px; opacity: 0.8; }
-        .btn-group { display: flex; gap: 20px; }
-        .btn {
-            padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 600;
-            transition: 0.3s; text-transform: uppercase; font-size: 0.9rem;
-        }
-        .btn-white { background: #fff; color: #000; }
-        .btn-outline { border: 1px solid #fff; color: #fff; }
-
-        section { padding: 100px 5%; }
-        .section-title { font-size: 3.5rem; font-weight: 900; margin-bottom: 60px; text-transform: uppercase; text-align: center; }
-
-        .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .portfolio-item {
-            position: relative; height: 500px; border-radius: 30px; overflow: hidden;
-            background-size: cover; background-position: center; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-        .portfolio-item:hover { transform: scale(0.97); }
-        .portfolio-info {
-            position: absolute; bottom: 0; left: 0; right: 0; padding: 40px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-        }
-        .tag { background: #fff; color: #000; padding: 6px 18px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; margin-bottom: 15px; display: inline-block; }
-        .portfolio-info h3 { font-size: 2.2rem; margin-bottom: 10px; font-weight: 700; }
-
-        .tariffs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1200px; margin: 0 auto; }
-        .tariff-card {
-            background: #111; padding: 50px 40px; border-radius: 35px; border: 1px solid #222;
-            transition: 0.4s; position: relative;
-        }
-        .tariff-card:hover { border-color: #fff; transform: translateY(-15px); }
-        .tariff-card h3 { font-size: 2rem; margin-bottom: 25px; font-weight: 700; }
-        .tariff-card ul { list-style: none; margin-bottom: 45px; opacity: 0.7; font-size: 0.95rem; line-height: 1.6; }
-        .tariff-card li::before { content: "•"; margin-right: 10px; color: #fff; }
-        .price { font-size: 1.6rem; font-weight: 700; letter-spacing: -1px; }
-
-        .form-section { 
-            background: #111; border-radius: 50px; padding: 100px; 
-            max-width: 1200px; margin: 100px auto; 
-            display: flex; gap: 100px; align-items: center;
-        }
-        .form-content { flex: 1; }
-        .form-container { flex: 1; }
-        .form-content h2 { font-size: 4rem; font-weight: 900; line-height: 1; margin-bottom: 20px; text-transform: uppercase; }
-        input {
-            width: 100%; background: #1a1a1a; border: 1px solid #333;
-            padding: 25px; color: #fff; font-family: inherit; font-size: 1.1rem; border-radius: 15px; margin-bottom: 20px;
-            outline: none; transition: 0.3s;
-        }
-        input:focus { border-color: #fff; background: #222; }
-        .submit-btn {
-            width: 100%; background: #fff; color: #000; border: none; padding: 25px;
-            border-radius: 40px; font-weight: 700; cursor: pointer; transition: 0.3s;
-            font-size: 1.1rem; text-transform: uppercase;
-        }
-        .submit-btn:hover { background: #eee; transform: scale(1.02); }
-
-        @media (max-width: 1000px) {
-            .portfolio-grid, .tariffs-grid { grid-template-columns: 1fr; }
-            .form-section { flex-direction: column; gap: 50px; padding: 50px; text-align: center; }
-            .hero h1 { font-size: 2.2rem; }
-            .section-title { font-size: 2.5rem; }
+        .hero h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 25px; max-width: 1000px; text-transform: uppercase; }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin-bottom: 50px; opacity: 0.9; line-height: 1.6; }
+        .btn-group { display: flex; gap: 25px; }
+        .btn { padding: 20px 45px; border-radius: 100px; text-decoration: none; text-transform: uppercase; font-weight: 700; transition: 0.3s; font-size: 0.9rem; letter-spacing: 1px; }
+        .btn-primary { background: #fff; color: #000; }
+        .btn-primary:hover { background: #eee; }
+        .btn-secondary { border: 1px solid #fff; color: #fff; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+        
+        .projects { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 60px; text-align: center; }
+        .project-grid { display: grid; grid-template-columns: 1fr; gap: 80px; }
+        .project-card { border-radius: 60px; overflow: hidden; background: #111; display: flex; min-height: 550px; border: 1px solid rgba(255,255,255,0.05); }
+        .project-card.reverse { flex-direction: row-reverse; }
+        .project-img { flex: 1.5; overflow: hidden; }
+        .project-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
+        .project-card:hover .project-img img { transform: scale(1.08); }
+        .project-content { flex: 1; padding: 80px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        .project-tag { position: absolute; top: 40px; left: 80px; border: 1px solid rgba(255,255,255,0.3); padding: 8px 25px; border-radius: 30px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .project-name { font-size: 3rem; font-weight: 700; margin-bottom: 25px; }
+        .project-desc { font-size: 1.1rem; opacity: 0.6; margin-bottom: 40px; line-height: 1.6; }
+        .project-meta { display: flex; gap: 50px; font-size: 1.1rem; }
+        .project-meta div span { display: block; opacity: 0.5; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
+        
+        @media (max-width: 992px) {
+            .project-card, .project-card.reverse { flex-direction: column; height: auto; }
+            .project-content { padding: 40px; }
+            .project-tag { top: 20px; left: 40px; }
+            .hero h1 { font-size: 2.5rem; }
+            .header-fixed { padding: 0 25px; height: 80px; top: 15px; }
+            .icon-circle { width: 50px; height: 50px; }
+            .icon-circle svg { width: 22px; height: 22px; }
         }
     </style>
 </head>
 <body>
-
     <header class="header-fixed">
         <div class="logo">
-            <img src="https://4solutions.ru/images/tild3461-3636-4131-b461-326365313936__logo_white.png" alt="4Solutions">
+            <img src="https://static.tildacdn.com/tild6130-3136-4139-a337-343036323439/4_.svg" alt="4Solutions Logo">
         </div>
         <div class="header-icons">
             <a href="https://t.me/solutions2019" class="icon-circle" target="_blank">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.42-1.39-.88.03-.24.36-.49 1-.74 3.92-1.71 6.53-2.83 7.84-3.37 3.73-1.54 4.5-1.81 5-.12z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.42-1.39-.89.03-.24.37-.49 1.02-.73 4-.1 4.74-2.67 5.74-10 6.15-3.11.26-3.11 1.01-3.11-.67 0-1.29.33-1.68.89-.39.56-.51 1.28-.32 1.95.22.75.91 2.22 1.01 2.41z"/></svg>
             </a>
             <a href="tel:+74955322617" class="icon-circle">
                 <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             </a>
-            <div class="icon-circle">
+            <a href="#" class="icon-circle">
                 <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-            </div>
+            </a>
         </div>
     </header>
 
     <section class="hero">
-        <h1>Территория стиля и минималиzма для твоего дома и бизнеса</h1>
+        <h1>ТЕРРИТОРИЯ СТИЛЯ И МИНИМАЛИZМА ДЛЯ ТВОЕГО ДОМА И БИЗНЕСА</h1>
         <p>Компании 4РЕШЕНИЯ поможет вам раскрыть ваш потенциал и создать проекты, которые будут отражать вашу уникальность и индивидуальность.</p>
         <div class="btn-group">
-            <a href="#portfolio" class="btn btn-white">Посмотреть работы</a>
-            <a href="#form" class="btn btn-outline">Оставить заявку</a>
+            <a href="/portfolio" class="btn btn-primary">ПОСМОТРЕТЬ РАБОТЫ</a>
+            <a href="#formpopup" class="btn btn-secondary">Оставить заявку</a>
         </div>
     </section>
 
-    <section id="portfolio">
-        <h2 class="section-title">ПОРТФОЛИО</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item" style="background-image: url('https://4solutions.ru/images/tild3838-3136-4131-a237-646261313361__1.jpg');">
-                <div class="portfolio-info">
-                    <span class="tag">ПРЕМИУМ</span>
-                    <h3>Поклонная 9</h3>
-                    <p>Площадь: 114м² | Цена: 45.500 ₽ м²</p>
+    <section class="projects">
+        <h2 class="section-title">Проекты</h2>
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://static.tildacdn.com/tild3133-3162-4265-b131-316538393561/poklonnaya-9-premium.jpg" alt="ЖК Манифест">
+                </div>
+                <div class="project-content">
+                    <div class="project-tag">ПРЕМИУМ</div>
+                    <h3 class="project-name">ЖК Манифест</h3>
+                    <p class="project-desc">Капитальный ремонт в новостройке. Яркий пример того, как можно сделать эффектный интерьер и воплотить мечту заказчика в реальность.</p>
+                    <div class="project-meta">
+                        <div><span>Площадь:</span> 114м²</div>
+                        <div><span>Цена:</span> 45.500 ₽ м²</div>
+                    </div>
                 </div>
             </div>
-            <div class="portfolio-item" style="background-image: url('https://4solutions.ru/images/tild3133-3330-4135-a134-316238356166__1.jpg');">
-                <div class="portfolio-info">
-                    <span class="tag">БИЗНЕС</span>
-                    <h3>ЖК Манифест</h3>
-                    <p>Площадь: 86.6м² | Цена: 56.000 ₽ м²</p>
+            
+            <!-- Project 2 -->
+            <div class="project-card reverse">
+                <div class="project-img">
+                    <img src="https://static.tildacdn.com/tild3037-3330-4137-b062-636466646536/ap-2119.jpg" alt="Поклонная 9">
                 </div>
-            </div>
-            <div class="portfolio-item" style="background-image: url('https://4solutions.ru/images/tild3566-3164-4235-b565-356336333765__1.jpg');">
-                <div class="portfolio-info">
-                    <span class="tag">БИЗНЕС</span>
-                    <h3>Discovery Park</h3>
-                    <p>Площадь: 64м² | Цена: 58.000 ₽ м²</p>
-                </div>
-            </div>
-            <div class="portfolio-item" style="background-image: url('https://4solutions.ru/images/tild6462-6330-4663-b035-313837336338__---1.jpg');">
-                <div class="portfolio-info">
-                    <span class="tag">КОМФОРТ</span>
-                    <h3>ЖК Румянцево</h3>
-                    <p>Площадь: 42м² | Цена: 32.000 ₽ м²</p>
+                <div class="project-content">
+                    <div class="project-tag">БИЗНЕС</div>
+                    <h3 class="project-name">Поклонная 9 (ап.2119)</h3>
+                    <p class="project-desc">Дизайн и ремонт под ключ. Создание функционального и стильного пространства для современной жизни.</p>
+                    <div class="project-meta">
+                        <div><span>Площадь:</span> 64м²</div>
+                        <div><span>Цена:</span> 58.000 ₽ м²</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <section id="tariffs">
-        <h2 class="section-title">ТАРИФНЫЕ ПЛАНЫ</h2>
-        <div class="tariffs-grid">
-            <div class="tariff-card">
-                <h3>Бетон Комфорт</h3>
-                <ul>
-                    <li>Укрывные работы</li>
-                    <li>Черновые и инженерные работы</li>
-                    <li>Натяжные потолки</li>
-                    <li>Подготовка под обои</li>
-                </ul>
-                <p class="price">от 26 500 ₽/м²</p>
-            </div>
-            <div class="tariff-card">
-                <h3>Бетон Бизнес</h3>
-                <ul>
-                    <li>Улучшенная электрика</li>
-                    <li>Инженерная сантехника</li>
-                    <li>Теневой профиль потолков</li>
-                    <li>Технический надзор</li>
-                </ul>
-                <p class="price">от 36 500 ₽/м²</p>
-            </div>
-            <div class="tariff-card">
-                <h3>Дизайн Проект</h3>
-                <ul>
-                    <li>Обмерный план</li>
-                    <li>3D Визуализация</li>
-                    <li>Спецификации материалов</li>
-                    <li>Авторский надзор</li>
-                </ul>
-                <p class="price">от 6 500 ₽/м²</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="form">
-        <div class="form-section">
-            <div class="form-content">
-                <h2>ОСТАВИТЬ ЗАЯВКУ+</h2>
-                <p style="opacity: 0.5; font-size: 1.1rem;">ЗАПОЛНИТЕ ФОРМУ, ЧТОБЫ ПОЛУЧИТЬ БЕСПЛАТНУЮ КОНСУЛЬТАЦИЮ</p>
-            </div>
-            <div class="form-container">
-                <form>
-                    <input type="text" placeholder="Ваше имя">
-                    <input type="tel" placeholder="+7 (000) 000-00-00">
-                    <button type="submit" class="submit-btn">Отправить</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
 </body>
 </html>
