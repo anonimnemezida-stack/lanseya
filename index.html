@@ -3,467 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lanseya | Строительная компания</title>
+    <title>4Solutions | Строительная компания</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;900&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .header-fixed {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 95%; max-width: 1200px; height: 100px;
+            background: rgba(18, 18, 18, 0.95); border-radius: 50px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 40px; z-index: 1000; border: 1px solid rgba(255,255,255,0.1);
         }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: #000;
-            color: #fff;
-            overflow-x: hidden;
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo img { height: 45px; }
+        .header-icons { display: flex; gap: 15px; }
+        .icon-circle {
+            width: 55px; height: 55px; background: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.3s ease; cursor: pointer;
         }
-        
-        /* Layout Grid */
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 0 50px;
-        }
-        
-        /* Header Overlay */
-        header {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 100px);
-            max-width: 1500px;
-            height: 120px;
-            background: rgba(15, 15, 15, 0.95);
-            border-radius: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-            z-index: 1000;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-        
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .logo-icon {
-            width: 60px;
-            height: 60px;
-            background: #fff;
-            color: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 32px;
-            border-radius: 5px;
-        }
-        
-        .logo-info h2 {
-            font-size: 24px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        
-        .logo-info p {
-            font-size: 10px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .header-right {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .circle-btn {
-            width: 70px;
-            height: 70px;
-            background: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .circle-btn svg {
-            width: 30px;
-            height: 30px;
-            fill: #000;
-        }
-        
-        .circle-btn:hover {
-            transform: scale(1.1);
-            background: #eee;
-        }
-        
-        /* Hero Section */
+        .icon-circle:hover { transform: scale(1.1); }
+        .icon-circle svg { width: 25px; height: 25px; fill: #000; }
+
         .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 140px;
+            height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://4solutions.ru/images/tild3133-3162-4265-b131-316538393561__---1.jpg') center/cover;
+            display: flex; flex-direction: column; justify-content: center; padding: 0 5%;
         }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920') center/cover;
-            z-index: -1;
+        .hero h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px; max-width: 800px; text-transform: uppercase; }
+        .hero p { font-size: 1.1rem; max-width: 600px; margin-bottom: 40px; opacity: 0.8; }
+        .btn-group { display: flex; gap: 20px; }
+        .btn {
+            padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 600;
+            transition: 0.3s; text-transform: uppercase; font-size: 0.9rem;
         }
-        
-        .hero-content {
-            width: 100%;
-        }
-        
-        .hero-main {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .main-title {
-            font-size: 100px;
-            font-weight: 100;
-            letter-spacing: 40px;
-            text-transform: uppercase;
-            margin-left: 40px; /* offset for last letter spacing */
-        }
-        
-        .main-subtitle {
-            font-size: 16px;
-            font-weight: 300;
-            letter-spacing: 12px;
-            text-transform: uppercase;
-            color: #888;
-        }
-        
-        .btn-order-wrap {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-        
-        .btn-order {
-            display: inline-block;
-            padding: 25px 80px;
-            background: #fff;
-            color: #000;
-            text-decoration: none;
-            border-radius: 60px;
-            font-size: 18px;
-            font-weight: 400;
-            transition: all 0.3s;
-        }
-        
-        .btn-order:hover {
-            transform: scale(1.05);
-            background: #ddd;
-        }
-        
-        .hero-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-        
-        .hero-left-text {
-            max-width: 450px;
-        }
-        
-        .hero-left-text h3 {
-            font-size: 24px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        
-        .hero-left-text p {
-            font-size: 14px;
-            color: #aaa;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-        
-        .btn-works {
-            font-size: 14px;
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 1px solid #fff;
-            padding-bottom: 5px;
-        }
-        
-        .hero-awards {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .award-card {
-            width: 220px;
-            height: 280px;
-            background: rgba(30, 30, 30, 0.4);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .award-img {
-            width: 120px;
-            height: 150px;
-            background: #222;
-            margin: 0 auto;
-            border-radius: 5px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .award-card p {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #fff;
-        }
-        
-        /* Gallery Text */
-        .gallery-bg-text {
-            font-size: 250px;
-            font-weight: 900;
-            color: rgba(255,255,255,0.03);
-            text-align: center;
-            padding: 50px 0;
-            letter-spacing: 30px;
-            user-select: none;
-        }
-        
-        /* Portfolio */
-        .portfolio {
-            padding: 100px 0;
-        }
-        
-        .portfolio-title {
-            font-size: 60px;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 80px;
-            text-transform: uppercase;
-            letter-spacing: 10px;
-        }
-        
+        .btn-white { background: #fff; color: #000; }
+        .btn-outline { border: 1px solid #fff; color: #fff; }
+        .btn:hover { opacity: 0.8; transform: translateY(-3px); }
+
+        section { padding: 100px 5%; }
+        .section-title { font-size: 3rem; font-weight: 900; margin-bottom: 60px; text-transform: uppercase; }
+
+        .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
         .portfolio-item {
-            position: relative;
-            margin-bottom: 40px;
-            height: 80vh;
-            overflow: hidden;
-            border-radius: 30px;
+            position: relative; height: 500px; border-radius: 20px; overflow: hidden;
+            background-size: cover; background-position: center; transition: 0.5s;
         }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
+        .portfolio-item:hover { transform: scale(0.98); }
+        .portfolio-info {
+            position: absolute; bottom: 0; left: 0; right: 0; padding: 40px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
         }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.05);
+        .tag { background: #fff; color: #000; padding: 5px 15px; border-radius: 15px; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; display: inline-block; }
+
+        .tariffs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .tariff-card {
+            background: #111; padding: 40px; border-radius: 25px; border: 1px solid #222;
+            transition: 0.4s; position: relative; overflow: hidden;
         }
-        
-        .item-info {
-            position: absolute;
-            bottom: 60px;
-            left: 60px;
-            z-index: 2;
+        .tariff-card:hover { border-color: #fff; transform: translateY(-10px); }
+        .tariff-card h3 { font-size: 1.8rem; margin-bottom: 20px; }
+        .tariff-card ul { list-style: none; margin-bottom: 40px; opacity: 0.7; font-size: 0.9rem; }
+        .tariff-card li { margin-bottom: 10px; }
+        .price { font-size: 1.5rem; font-weight: 700; }
+
+        .form-section { background: #111; border-radius: 40px; padding: 80px; margin: 100px 5%; display: flex; gap: 80px; }
+        .form-content { flex: 1; }
+        .form-container { flex: 1; }
+        input {
+            width: 100%; background: transparent; border: none; border-bottom: 1px solid #444;
+            padding: 20px 0; color: #fff; font-family: inherit; font-size: 1.1rem; margin-bottom: 30px;
+            outline: none; transition: 0.3s;
         }
-        
-        .item-info h4 {
-            font-size: 48px;
-            font-weight: 600;
-            margin-bottom: 10px;
+        input:focus { border-color: #fff; }
+        .submit-btn {
+            background: #fff; color: #000; border: none; padding: 15px 40px;
+            border-radius: 30px; font-weight: 700; cursor: pointer; transition: 0.3s;
         }
-        
-        .item-info p {
-            font-size: 18px;
-            color: #ccc;
-        }
-        
-        /* Form Section */
-        .form-section {
-            padding: 150px 0;
-        }
-        
-        .form-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .form-title {
-            font-size: 80px;
-            font-weight: 900;
-            margin-bottom: 60px;
-            text-transform: uppercase;
-        }
-        
-        .form-row {
-            margin-bottom: 40px;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 30px;
-            background: #111;
-            border: 1px solid #333;
-            color: #fff;
-            font-size: 18px;
-            border-radius: 15px;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: #666;
-        }
-        
-        .btn-submit {
-            padding: 25px 80px;
-            background: #fff;
-            color: #000;
-            border: none;
-            border-radius: 50px;
-            font-size: 20px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-submit:hover {
-            background: #ddd;
-        }
-        
-        @media (max-width: 1200px) {
-            .main-title { font-size: 60px; letter-spacing: 20px; }
-            .hero-bottom { flex-direction: column; align-items: center; gap: 50px; }
-            .hero-awards { flex-direction: column; }
+        .submit-btn:hover { background: #ccc; }
+
+        @media (max-width: 900px) {
+            .portfolio-grid, .tariffs-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .form-section { flex-direction: column; gap: 40px; padding: 40px; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-left">
-            <div class="logo-icon">4Р</div>
-            <div class="logo-info">
-                <h2>4 РЕШЕНИЯ</h2>
-                <p>Строительная компания</p>
-            </div>
+
+    <header class="header-fixed">
+        <div class="logo">
+            <img src="https://4solutions.ru/images/tild3461-3636-4131-b461-326365313936__logo_white.png" alt="Logo">
         </div>
-        <div class="header-right">
-            <div class="circle-btn">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.42-1.39-.89.03-.24.36-.49.99-.75 3.88-1.69 6.46-2.8 7.74-3.35 3.68-1.58 4.45-1.85 4.95-1.86.11 0 .35.03.5.16.13.11.17.26.18.37 0 .01.01.05.01.09z"/></svg>
-            </div>
-            <div class="circle-btn">
+        <div class="header-icons">
+            <a href="https://t.me/solutions2019" class="icon-circle">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.42-1.39-.88.03-.24.36-.49 1-.74 3.92-1.71 6.53-2.83 7.84-3.37 3.73-1.54 4.5-1.81 5-.12z"/></svg>
+            </a>
+            <a href="tel:+74955322617" class="icon-circle">
                 <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            </div>
-            <div class="circle-btn">
+            </a>
+            <div class="icon-circle">
                 <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
             </div>
         </div>
     </header>
 
-    <section class="hero" id="main">
-        <div class="hero-bg"></div>
-        <div class="container hero-content">
-            <div class="hero-main">
-                <h1 class="main-title">РЕШЕНИЯ</h1>
-                <p class="main-subtitle">Строительная компания</p>
-            </div>
-            <div class="btn-order-wrap">
-                <a href="#form" class="btn-order">Оставить заявку</a>
-            </div>
-            <div class="hero-bottom">
-                <div class="hero-left-text">
-                    <h3>Территория стиля и минимализма<br>для твоего дома и бизнеса</h3>
-                    <p>Компании 4РЕШЕНИЯ поможет вам раскрыть ваш потенциал и создать проекты, которые будут отражать вашу уникальность и индивидуальность.</p>
-                    <a href="#portfolio" class="btn-works">Посмотреть работы</a>
+    <section class="hero">
+        <h1>Территория стиля и минималиzма для твоего дома и бизнеса</h1>
+        <p>Компании 4РЕШЕНИЯ поможет вам раскрыть ваш потенциал и создать проекты, которые будут отражать вашу уникальность и индивидуальность.</p>
+        <div class="btn-group">
+            <a href="#portfolio" class="btn btn-white">Посмотреть работы</a>
+            <a href="#form" class="btn btn-outline">Оставить заявку</a>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2 class="section-title">Портфолио</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" style="background-image: url('https://4solutions.ru/images/tild3838-3136-4131-a237-646261313361__1.jpg');">
+                <div class="portfolio-info">
+                    <span class="tag">ПРЕМИУМ</span>
+                    <h3>Поклонная 9</h3>
+                    <p>114м² | 45.500 ₽ м²</p>
                 </div>
-                <div class="hero-awards">
-                    <div class="award-card">
-                        <div class="award-img"></div>
-                        <p>Best Renovation<br>Awards 2021</p>
-                    </div>
-                    <div class="award-card">
-                        <div class="award-img"></div>
-                        <p>Является<br>членом союза</p>
-                    </div>
-                    <div class="award-card">
-                        <div class="award-img"></div>
-                        <p>Urban<br>Awards 2022</p>
-                    </div>
+            </div>
+            <div class="portfolio-item" style="background-image: url('https://4solutions.ru/images/tild3133-3330-4135-a134-316238356166__1.jpg');">
+                <div class="portfolio-info">
+                    <span class="tag">БИЗНЕС</span>
+                    <h3>ЖК Манифест</h3>
+                    <p>86.6м² | 56.000 ₽ м²</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="gallery-bg-text">GALLERY</div>
-
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <h2 class="portfolio-title">Портфолио</h2>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1600" alt="Project 1">
-                <div class="item-info">
-                    <h4>Поклонная 9</h4>
-                    <p>Премиум • 114м² • 45.500 ₽/м²</p>
-                </div>
+    <section id="tariffs">
+        <h2 class="section-title">Тарифные планы</h2>
+        <div class="tariffs-grid">
+            <div class="tariff-card">
+                <h3>Бетон Комфорт</h3>
+                <ul>
+                    <li>Укрывные работы</li>
+                    <li>Черновые и инженерные работы</li>
+                    <li>Натяжные потолки</li>
+                    <li>Подготовка под обои</li>
+                </ul>
+                <p class="price">от 26 500 ₽/м²</p>
             </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600" alt="Project 2">
-                <div class="item-info">
-                    <h4>ЖК Манифест</h4>
-                    <p>Бизнес • 86.6м² • 56 000 ₽/м²</p>
-                </div>
+            <div class="tariff-card">
+                <h3>Бетон Бизнес</h3>
+                <ul>
+                    <li>Улучшенная электрика</li>
+                    <li>Инженерная сантехника</li>
+                    <li>Теневой профиль потолков</li>
+                    <li>Технический надзор</li>
+                </ul>
+                <p class="price">от 36 500 ₽/м²</p>
             </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1600" alt="Project 3">
-                <div class="item-info">
-                    <h4>Discovery Park</h4>
-                    <p>Бизнес • 64м² • 58 000 ₽/м²</p>
-                </div>
+            <div class="tariff-card">
+                <h3>Дизайн Проект</h3>
+                <ul>
+                    <li>Обмерный план</li>
+                    <li>3D Визуализация</li>
+                    <li>Спецификации материалов</li>
+                    <li>Авторский надзор</li>
+                </ul>
+                <p class="price">от 6 500 ₽/м²</p>
             </div>
         </div>
     </section>
 
-    <section class="form-section" id="form">
-        <div class="container">
+    <section id="form">
+        <div class="form-section">
             <div class="form-content">
-                <h2 class="form-title">Оставить<br>заявку+</h2>
+                <h2 style="font-size: 3rem; font-weight: 900; margin-bottom: 20px;">Оставить заявку+</h2>
+                <p style="opacity: 0.6;">Заполните форму, чтобы получить бесплатную консультацию и расчет стоимости вашего проекта.</p>
+            </div>
+            <div class="form-container">
                 <form>
-                    <div class="form-row">
-                        <input type="text" class="form-input" placeholder="Ваше имя" required>
-                    </div>
-                    <div class="form-row">
-                        <input type="tel" class="form-input" placeholder="+7 (000) 000-00-00" required>
-                    </div>
-                    <button type="submit" class="btn-submit">Отправить</button>
+                    <input type="text" placeholder="Ваше имя">
+                    <input type="tel" placeholder="+7 (000) 000-00-00">
+                    <button type="submit" class="submit-btn">Отправить</button>
                 </form>
             </div>
         </div>
     </section>
+
 </body>
 </html>
