@@ -4,81 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4Solutions | Строительная компания</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --bg-color: #000000; --text-color: #ffffff; --accent-color: #c5a059; --secondary-bg: #111111; }
+        :root { --accent: #c5a059; --bg: #000; --text: #fff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background: var(--bg-color); color: var(--text-color); overflow-x: hidden; line-height: 1.6; scroll-behavior: smooth; }
-        .header-bar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1200px; background: rgba(0, 0, 0, 0.9); border-radius: 50px; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
-        .logo-box h1 { font-size: 1.5rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; }
-        .header-icons { display: flex; gap: 20px; align-items: center; }
-        .header-icons a, .menu-trigger { width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; text-decoration: none; font-size: 1.4rem; transition: 0.3s; cursor: pointer; }
-        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://4solutions.ru/images/tild3534-3131-4161-b530-366366373735/-/resize/504x/photo_2023-10-31_17-.jpg') center/cover no-repeat fixed; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; }
-        .hero-content h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; text-transform: uppercase; margin-bottom: 25px; max-width: 1000px; line-height: 1.1; }
-        .hero-content p { font-size: 1.3rem; max-width: 800px; margin: 0 auto 40px; opacity: 0.9; }
-        .btn-group { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 18px 50px; border-radius: 40px; text-decoration: none; font-weight: 700; text-transform: uppercase; transition: 0.3s; cursor: pointer; display: inline-block; }
-        .btn-primary { background: white; color: black; border: 2px solid white; }
-        .btn-outline { border: 2px solid white; color: white; background: transparent; }
-        .special { padding: 120px 5%; background: var(--secondary-bg); border-radius: 60px 60px 0 0; margin-top: -60px; position: relative; }
-        .special-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .special-text h2 { font-size: 3.5rem; color: var(--accent-color); margin-bottom: 20px; font-weight: 900; }
-        .portfolio { padding: 100px 5%; }
-        .portfolio h2 { font-size: 4rem; text-align: center; margin-bottom: 60px; font-weight: 900; letter-spacing: 10px; }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
-        .portfolio-item { border-radius: 30px; overflow: hidden; aspect-ratio: 16/10; }
-        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.7s; cursor: pointer; }
-        .contact { padding: 120px 5%; background: #000; }
-        .form-card { background: rgba(255,255,255,0.05); padding: 60px; border-radius: 40px; max-width: 700px; margin: 0 auto; }
-        .submit-btn { width: 100%; padding: 25px; background: var(--accent-color); color: white; border: none; border-radius: 15px; font-weight: 900; cursor: pointer; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; scroll-behavior: smooth; }
+        .header { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 1200px; background: rgba(0,0,0,0.9); border-radius: 60px; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; z-index: 2000; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+        .logo h1 { font-size: 1.4rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+        .nav-icons { display: flex; gap: 15px; }
+        .nav-icons a, .menu-btn { width: 48px; height: 48px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; text-decoration: none; font-size: 1.3rem; transition: 0.3s; cursor: pointer; border: none; }
+        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://4solutions.ru/images/tild3534-3131-4161-b530-366366373735/-/resize/800x/photo_2023-10-31_17-.jpg') center/cover no-repeat; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase; max-width: 1000px; margin-bottom: 30px; }
+        .btn { padding: 18px 45px; border-radius: 40px; text-decoration: none; font-weight: 700; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
+        .btn-white { background: #fff; color: #000; }
+        .btn-outline { border: 2px solid #fff; color: #fff; }
+        .special { padding: 100px 5%; background: #0a0a0a; border-radius: 50px 50px 0 0; margin-top: -50px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .gallery { padding: 100px 5%; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
+        .img-card { border-radius: 25px; overflow: hidden; aspect-ratio: 16/10; }
+        .img-card img { width: 100%; height: 100%; object-fit: cover; }
+        .form-sec { padding: 100px 5%; background: #050505; }
+        .form-box { background: #111; padding: 60px; border-radius: 40px; max-width: 600px; margin: 0 auto; }
+        .send-btn { width: 100%; padding: 22px; background: var(--accent); color: #fff; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; }
     </style>
 </head>
 <body>
-    <header class="header-bar">
-        <div class="logo-box"><h1>4 РЕШЕНИЯ</h1></div>
-        <div class="header-icons">
-            <a href="https://t.me/solutions2019" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-            <a href="tel:+74955322617"><i class="fas fa-phone"></i></a>
-            <div class="menu-trigger"><i class="fas fa-bars"></i></div>
+    <header class="header">
+        <div class="logo"><h1>4 РЕШЕНИЯ</h1></div>
+        <div class="nav-icons">
+            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+            <a href="#"><i class="fas fa-phone"></i></a>
+            <button class="menu-btn"><i class="fas fa-bars"></i></button>
         </div>
     </header>
     <section class="hero">
-        <div class="hero-content">
-            <h1>Территория стиля и минимализма для твоего дома и бизнеса</h1>
-            <p>Компании 4РЕШЕНИЯ поможет вам раскрыть ваш потенциал и создать проекты, которые будут отражать вашу уникальность и индивидуальность.</p>
-            <div class="btn-group">
-                <a href="#projects" class="btn btn-primary">Посмотреть работы</a>
-                <a href="#contact" class="btn btn-outline">Оставить заявку</a>
-            </div>
+        <h1>Территория стиля и минимализма</h1>
+        <div class="btns">
+            <a href="#" class="btn btn-white">Посмотреть работы</a>
+            <a href="#" class="btn btn-outline">Оставить заявку</a>
         </div>
     </section>
     <section class="special">
-        <div class="special-grid">
-            <div class="special-text">
+        <div class="grid">
+            <div class="text-box">
                 <h2>БЫСТРЫЙ СТАРТ</h2>
-                <h3>Черновая отделка «под ключ»</h3>
-                <div class="special-price">Цена: 13 500 ₽/м²</div>
-                <a href="#contact" class="btn btn-primary" style="background: var(--accent-color); color: white; border: none;">Заказать сейчас</a>
+                <div style="font-size: 2.5rem; font-weight: 800; margin: 30px 0;">13 500 ₽/м²</div>
             </div>
-            <img src="https://4solutions.ru/images/tild3164-3932-4161-b663-393836386435/-/resize/504x/photo.jpg" style="width: 100%; border-radius: 40px;">
+            <img src="https://4solutions.ru/images/tild3534-3131-4161-b530-366366373735/-/resize/600x/photo_2023-10-31_17-.jpg" style="width: 100%; border-radius: 30px;">
         </div>
     </section>
-    <section id="projects" class="portfolio">
-        <h2>PORTFOLIO</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item"><img src="https://4solutions.ru/images/tild3966-6566-4131-b062-306231363939/-/resize/600x/photo.jpg"></div>
-            <div class="portfolio-item"><img src="https://4solutions.ru/images/tild6562-3162-4530-b964-323330666164/-/resize/600x/photo.jpg"></div>
+    <section class="gallery">
+        <div class="gallery-grid">
+            <div class="img-card"><img src="https://4solutions.ru/images/tild3966-6566-4131-b062-306231363939/-/resize/600x/photo.jpg"></div>
+            <div class="img-card"><img src="https://4solutions.ru/images/tild6562-3162-4530-b964-323330666164/-/resize/600x/photo.jpg"></div>
         </div>
     </section>
-    <section id="contact" class="contact">
-        <div class="form-card">
-            <h2>ЗАЯВКА</h2>
-            <form>
-                <input type="text" placeholder="Имя" required>
-                <input type="tel" placeholder="Телефон" required>
-                <button type="submit" class="submit-btn">ОТПРАВИТЬ</button>
-            </form>
+    <section class="form-sec">
+        <div class="form-box">
+            <h2>ОСТАВИТЬ ЗАЯВКУ</h2>
+            <button class="send-btn">ОТПРАВИТЬ</button>
         </div>
     </section>
 </body>
