@@ -1,265 +1,85 @@
 <!DOCTYPE html>
-<html lang="ru"> 
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4Solutions | Строительная компания</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --bg-color: #000000;
-            --text-color: #ffffff;
-            --accent-color: #c5a059;
-            --secondary-bg: #111111;
-        }
+        :root { --bg-color: #000000; --text-color: #ffffff; --accent-color: #c5a059; --secondary-bg: #111111; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-        a { text-decoration: none; color: inherit; transition: 0.3s; cursor: pointer; }
-        ul { list-style: none; }
-        .container { width: 92%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
-        .btn {
-            display: inline-block;
-            padding: 18px 45px;
-            border: 1px solid #fff;
-            color: #fff;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            transition: 0.3s;
-            cursor: pointer;
-            text-align: center;
-        }
-        .btn:hover { background: #fff; color: #000; }
-        .btn-gold { border-color: var(--accent-color); color: var(--accent-color); }
-        .btn-gold:hover { background: var(--accent-color); color: #000; }
-        section { padding: 120px 0; position: relative; }
-        
-        header { 
-            padding: 25px 0; 
-            position: fixed; 
-            width: 100%; 
-            top: 0; 
-            z-index: 1000; 
-            background: rgba(0,0,0,0.85); 
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .nav-links { display: flex; gap: 40px; align-items: center; font-size: 0.9rem; font-weight: 500; }
-        .nav-links a:hover { color: var(--accent-color); }
-
-        .hero { 
-            height: 100vh; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            text-align: center; 
-            background: url('https://4solutions.ru/images/tild3737-3363-4161-b462-633036666138__photo.jpg') center/cover no-repeat fixed;
-            position: relative;
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
-            z-index: 1;
-        }
-
-        h1 { font-size: 4.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 30px; text-transform: uppercase; }
-        h2 { font-size: 3rem; font-weight: 900; margin-bottom: 60px; text-transform: uppercase; }
-
-        .project-card { 
-            background: #000; 
-            padding: 25px; 
-            border: 1px solid #222; 
-            transition: 0.4s;
-        }
-        .project-card:hover { border-color: var(--accent-color); transform: translateY(-10px); }
-        .project-img { height: 300px; margin-bottom: 25px; }
-
-        .stage-item { 
-            flex: 1; min-width: 250px; padding: 40px; 
-            border-left: 1px solid var(--accent-color); 
-            background: rgba(255,255,255,0.02);
-        }
-
-        .tarif-card { padding: 50px 40px; border: 1px solid #222; background: #000; transition: 0.3s; }
-        .tarif-card.featured { border-color: var(--accent-color); background: #0a0a0a; }
-
-        input { 
-            width: 100%; padding: 20px; 
-            background: #000; border: 1px solid #333; 
-            color: #fff; margin-bottom: 20px; 
-            font-family: inherit;
-        }
-        input:focus { border-color: var(--accent-color); outline: none; }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-        }
+        body { font-family: 'Montserrat', sans-serif; background: var(--bg-color); color: var(--text-color); overflow-x: hidden; line-height: 1.6; scroll-behavior: smooth; }
+        .header-bar { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1200px; background: rgba(0, 0, 0, 0.9); border-radius: 50px; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+        .logo-box h1 { font-size: 1.5rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; }
+        .header-icons { display: flex; gap: 20px; align-items: center; }
+        .header-icons a, .menu-trigger { width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; text-decoration: none; font-size: 1.4rem; transition: 0.3s; cursor: pointer; }
+        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://4solutions.ru/images/tild3534-3131-4161-b530-366366373735/-/resize/504x/photo_2023-10-31_17-.jpg') center/cover no-repeat fixed; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; }
+        .hero-content h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; text-transform: uppercase; margin-bottom: 25px; max-width: 1000px; line-height: 1.1; }
+        .hero-content p { font-size: 1.3rem; max-width: 800px; margin: 0 auto 40px; opacity: 0.9; }
+        .btn-group { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 18px 50px; border-radius: 40px; text-decoration: none; font-weight: 700; text-transform: uppercase; transition: 0.3s; cursor: pointer; display: inline-block; }
+        .btn-primary { background: white; color: black; border: 2px solid white; }
+        .btn-outline { border: 2px solid white; color: white; background: transparent; }
+        .special { padding: 120px 5%; background: var(--secondary-bg); border-radius: 60px 60px 0 0; margin-top: -60px; position: relative; }
+        .special-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .special-text h2 { font-size: 3.5rem; color: var(--accent-color); margin-bottom: 20px; font-weight: 900; }
+        .portfolio { padding: 100px 5%; }
+        .portfolio h2 { font-size: 4rem; text-align: center; margin-bottom: 60px; font-weight: 900; letter-spacing: 10px; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
+        .portfolio-item { border-radius: 30px; overflow: hidden; aspect-ratio: 16/10; }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.7s; cursor: pointer; }
+        .contact { padding: 120px 5%; background: #000; }
+        .form-card { background: rgba(255,255,255,0.05); padding: 60px; border-radius: 40px; max-width: 700px; margin: 0 auto; }
+        .submit-btn { width: 100%; padding: 25px; background: var(--accent-color); color: white; border: none; border-radius: 15px; font-weight: 900; cursor: pointer; }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="/" style="font-weight: 900; font-size: 1.6rem; letter-spacing: 3px;">4РЕШЕНИЯ</a>
-            <nav class="nav-links">
-                <a href="#projects">Проекты</a>
-                <a href="#tarif">Тарифы</a>
-                <a href="#about">О нас</a>
-                <a href="#contact">Контакты</a>
-                <a href="tel:+74955322617" style="font-weight: 800; color: var(--accent-color);">+7 (495) 532-26-17</a>
-            </nav>
+    <header class="header-bar">
+        <div class="logo-box"><h1>4 РЕШЕНИЯ</h1></div>
+        <div class="header-icons">
+            <a href="https://t.me/solutions2019" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+            <a href="tel:+74955322617"><i class="fas fa-phone"></i></a>
+            <div class="menu-trigger"><i class="fas fa-bars"></i></div>
         </div>
     </header>
-
     <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <h1>Территория стиля и минималиzма для твоего дома и бизнеса</h1>
-            <p style="font-size: 1.3rem; max-width: 850px; margin: 0 auto 50px; opacity: 0.9; font-weight: 300;">Компания 4РЕШЕНИЯ поможет вам раскрыть ваш потенциал и создать проекты, которые будут отражать вашу уникальность и индивидуальность.</p>
-            <div style="display: flex; gap: 25px; justify-content: center; flex-wrap: wrap;">
-                <a href="#projects" class="btn">Посмотреть работы</a>
-                <a href="#contact" class="btn btn-gold">Оставить заявку</a>
+        <div class="hero-content">
+            <h1>Территория стиля и минимализма для твоего дома и бизнеса</h1>
+            <p>Компании 4РЕШЕНИЯ поможет вам раскрыть ваш потенциал и создать проекты, которые будут отражать вашу уникальность и индивидуальность.</p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">Посмотреть работы</a>
+                <a href="#contact" class="btn btn-outline">Оставить заявку</a>
             </div>
         </div>
     </section>
-
-    <section id="projects" style="background: var(--secondary-bg);">
-        <div class="container">
-            <h2>Портфолио</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px;">
-                <div class="project-card">
-                    <div class="project-img" style="background: url('https://4solutions.ru/images/tild6465-3832-4766-b962-316262333737__photo.jpg') center/cover;"></div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 15px;">ЖК Манифест</h3>
-                    <p style="opacity: 0.6; margin-bottom: 25px;">ПРЕМИУМ | 114м² | 45.500 ₽ м²</p>
-                    <a href="#" style="color: var(--accent-color); font-weight: 700; border-bottom: 1px solid;">ПОДРОБНЕЕ</a>
-                </div>
-                <div class="project-card">
-                    <div class="project-img" style="background: url('https://4solutions.ru/images/tild3164-3261-4633-b961-636336333939__photo.jpg') center/cover;"></div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Поклонная 9</h3>
-                    <p style="opacity: 0.6; margin-bottom: 25px;">БИЗНЕС | 86.6м² | 56.000 ₽ м²</p>
-                    <a href="#" style="color: var(--accent-color); font-weight: 700; border-bottom: 1px solid;">ПОДРОБНЕЕ</a>
-                </div>
-                <div class="project-card">
-                    <div class="project-img" style="background: url('https://4solutions.ru/images/tild6333-3331-4131-b662-363636653139__photo.jpg') center/cover;"></div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Румянцево</h3>
-                    <p style="opacity: 0.6; margin-bottom: 25px;">БИЗНЕС | 64м² | 58.000 ₽ м²</p>
-                    <a href="#" style="color: var(--accent-color); font-weight: 700; border-bottom: 1px solid;">ПОДРОБНЕЕ</a>
-                </div>
+    <section class="special">
+        <div class="special-grid">
+            <div class="special-text">
+                <h2>БЫСТРЫЙ СТАРТ</h2>
+                <h3>Черновая отделка «под ключ»</h3>
+                <div class="special-price">Цена: 13 500 ₽/м²</div>
+                <a href="#contact" class="btn btn-primary" style="background: var(--accent-color); color: white; border: none;">Заказать сейчас</a>
             </div>
-            <div style="text-align: center; margin-top: 80px;">
-                <a href="#" class="btn">Открыть галерею</a>
-            </div>
+            <img src="https://4solutions.ru/images/tild3164-3932-4161-b663-393836386435/-/resize/504x/photo.jpg" style="width: 100%; border-radius: 40px;">
         </div>
     </section>
-
-    <section id="stages">
-        <div class="container">
-            <h2 style="text-align: center;">Этапы работ</h2>
-            <div style="display: flex; flex-wrap: wrap; gap: 0;">
-                <div class="stage-item">
-                    <div style="color: var(--accent-color); font-weight: 900; margin-bottom: 15px;">01</div>
-                    <h4 style="margin-bottom: 15px; letter-spacing: 1px;">ЗВОНОК ИЛИ ЗАЯВКА</h4>
-                    <p style="font-size: 0.95rem; opacity: 0.7;">Обсуждаем ваши пожелания и назначаем встречу</p>
-                </div>
-                <div class="stage-item">
-                    <div style="color: var(--accent-color); font-weight: 900; margin-bottom: 15px;">02</div>
-                    <h4 style="margin-bottom: 15px; letter-spacing: 1px;">ВЫЕЗД ЗАМЕРЩИКА</h4>
-                    <p style="font-size: 0.95rem; opacity: 0.7;">Точные замеры и консультация на объекте</p>
-                </div>
-                <div class="stage-item">
-                    <div style="color: var(--accent-color); font-weight: 900; margin-bottom: 15px;">03</div>
-                    <h4 style="margin-bottom: 15px; letter-spacing: 1px;">СМЕТА</h4>
-                    <p style="font-size: 0.95rem; opacity: 0.7;">Прозрачный расчет всех этапов работ</p>
-                </div>
-                <div class="stage-item">
-                    <div style="color: var(--accent-color); font-weight: 900; margin-bottom: 15px;">04</div>
-                    <h4 style="margin-bottom: 15px; letter-spacing: 1px;">ДОГОВОР</h4>
-                    <p style="font-size: 0.95rem; opacity: 0.7;">Юридическая гарантия сроков и качества</p>
-                </div>
-            </div>
+    <section id="projects" class="portfolio">
+        <h2>PORTFOLIO</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item"><img src="https://4solutions.ru/images/tild3966-6566-4131-b062-306231363939/-/resize/600x/photo.jpg"></div>
+            <div class="portfolio-item"><img src="https://4solutions.ru/images/tild6562-3162-4530-b964-323330666164/-/resize/600x/photo.jpg"></div>
         </div>
     </section>
-
-    <section id="tarif" style="background: var(--secondary-bg);">
-        <div class="container">
-            <h2>Тарифные планы</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div class="tarif-card">
-                    <h3>Конструктор</h3>
-                    <div style="color: var(--accent-color); font-size: 2rem; font-weight: 800; margin: 30px 0;">Индивидуально</div>
-                    <ul style="opacity: 0.7; line-height: 2; margin-bottom: 40px;">
-                        <li>• Поэтапное производство</li>
-                        <li>• Индивидуальный расчет</li>
-                        <li>• Гибкость в выборе</li>
-                        <li>• Помощь в подборе</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-gold" style="width: 100%;">Выбрать</a>
-                </div>
-                <div class="tarif-card featured">
-                    <h3>Бетон Бизнес</h3>
-                    <div style="color: var(--accent-color); font-size: 2rem; font-weight: 800; margin: 30px 0;">от 36 500 ₽/m2</div>
-                    <ul style="opacity: 0.7; line-height: 2; margin-bottom: 40px;">
-                        <li>• Полный цикл черновых работ</li>
-                        <li>• Улучшенная сантехника</li>
-                        <li>• Натяжные потолки</li>
-                        <li>• Технический надзор</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-gold" style="width: 100%;">Выбрать</a>
-                </div>
-                <div class="tarif-card">
-                    <h3>Бетон Комфорт</h3>
-                    <div style="color: var(--accent-color); font-size: 2rem; font-weight: 800; margin: 30px 0;">от 26 500 ₽/m2</div>
-                    <ul style="opacity: 0.7; line-height: 2; margin-bottom: 40px;">
-                        <li>• Стандартный цикл работ</li>
-                        <li>• Укладка покрытий</li>
-                        <li>• Монтаж освещения</li>
-                        <li>• Финальный клининг</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-gold" style="width: 100%;">Выбрать</a>
-                </div>
-            </div>
+    <section id="contact" class="contact">
+        <div class="form-card">
+            <h2>ЗАЯВКА</h2>
+            <form>
+                <input type="text" placeholder="Имя" required>
+                <input type="tel" placeholder="Телефон" required>
+                <button type="submit" class="submit-btn">ОТПРАВИТЬ</button>
+            </form>
         </div>
     </section>
-
-    <section style="background: url('https://4solutions.ru/images/tild3564-3363-4564-a634-663831626330__photo.jpg') center/cover fixed;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85);"></div>
-        <div class="container" style="text-align: center; padding: 60px 0;">
-            <h2 style="margin-bottom: 20px;">Черновая отделка «под ключ»</h2>
-            <div style="font-size: 2.5rem; color: var(--accent-color); font-weight: 900; margin-bottom: 40px;">13 500 ₽/м²</div>
-            <a href="#contact" class="btn">Оставить заявку</a>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container" style="display: flex; flex-wrap: wrap; gap: 80px;">
-            <div style="flex: 1.2; min-width: 300px;">
-                <h2>Давайте начнем ваш ремонт</h2>
-                <p style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 40px;">Мы верим, что каждый ремонт должен быть не просто функциональным, но и являться проявлением вашего характера и стиля. Доверьте нам свои идеи!</p>
-                <div style="font-size: 2.5rem; font-weight: 900; color: var(--accent-color);">+7 (495) 532-26-17</div>
-            </div>
-            <div style="flex: 1; min-width: 300px; background: #080808; padding: 50px; border: 1px solid #222;">
-                <form>
-                    <input type="text" placeholder="Ваше имя">
-                    <input type="text" placeholder="+7 (___) ___-__-__">
-                    <button type="submit" class="btn btn-gold" style="width: 100%; font-size: 1rem;">Отправить заявку</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer style="padding: 60px 0; border-top: 1px solid #111; background: #000; text-align: center; opacity: 0.4;">
-        <div class="container">
-            <p style="font-size: 0.9rem;">&copy; 2024 4РЕШЕНИЯ. Строительная компания в Москве. Все права защищены.</p>
-        </div>
-    </footer>
 </body>
 </html>
