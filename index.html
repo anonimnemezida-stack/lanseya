@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lanseya | Территория стиля и минимализма</title>
+    <title>Lanseya | Строительная компания</title>
     <style>
         * {
             margin: 0;
@@ -12,394 +12,436 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #0a0a0a;
-            color: #ffffff;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
         }
         
+        /* Header */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(10, 10, 10, 0.95);
             padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid #222;
+            background: rgba(0,0,0,0.8);
         }
         
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 2px;
-        }
-        
-        nav {
+        .logo-top {
             display: flex;
-            gap: 40px;
-        }
-        
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: #888;
-        }
-        
-        .contact-buttons {
-            display: flex;
+            align-items: center;
             gap: 15px;
         }
         
-        .contact-btn {
+        .logo-icon {
             width: 50px;
             height: 50px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo-text {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .contact-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .icon-circle {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 24px;
             cursor: pointer;
             transition: transform 0.3s;
         }
         
-        .contact-btn:hover {
+        .icon-circle:hover {
             transform: scale(1.1);
         }
         
+        /* Hero Section */
         .hero {
-            margin-top: 100px;
-            padding: 100px 50px;
-            text-align: center;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920') center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 50px 50px;
         }
         
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 700;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1200px;
+        }
+        
+        .main-logo {
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .main-subtitle {
+            font-size: 18px;
+            letter-spacing: 8px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 20px 60px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+        
+        .hero-text {
+            margin-top: 80px;
+            text-align: left;
+        }
+        
+        .hero-text h2 {
+            font-size: 24px;
+            font-weight: 300;
             margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 3px;
         }
         
-        .hero p {
-            font-size: 20px;
-            color: #aaa;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        .hero-text p {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
         }
         
-        .cta-buttons {
+        .link-button {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 5px;
+            transition: opacity 0.3s;
+        }
+        
+        .link-button:hover {
+            opacity: 0.7;
+        }
+        
+        .awards {
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             gap: 20px;
-            justify-content: center;
         }
         
-        .btn {
-            padding: 15px 40px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .btn-primary {
-            background: #fff;
-            color: #000;
-            font-weight: 600;
-        }
-        
-        .btn-primary:hover {
-            background: #ddd;
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: #fff;
-            border: 2px solid #fff;
-            font-weight: 600;
-        }
-        
-        .btn-secondary:hover {
-            background: #fff;
-            color: #000;
-        }
-        
-        .section {
-            padding: 80px 50px;
-        }
-        
-        .section-title {
-            font-size: 36px;
+        .award {
             text-align: center;
-            margin-bottom: 60px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
         }
         
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
+        .award-icon {
+            width: 80px;
+            height: 100px;
+            background: #fff;
+            margin: 0 auto 10px;
+            border-radius: 5px;
         }
         
-        .service-card {
-            background: #1a1a1a;
-            padding: 40px;
-            border: 1px solid #333;
-            transition: transform 0.3s;
+        .award-text {
+            font-size: 12px;
+            line-height: 1.4;
         }
         
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: #666;
-        }
-        
-        .service-card h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        
-        .service-card ul {
-            list-style: none;
-            color: #aaa;
-        }
-        
-        .service-card li {
-            padding: 8px 0;
-            padding-left: 20px;
+        /* Gallery Section */
+        .gallery-section {
+            padding: 0;
+            background: #000;
             position: relative;
         }
         
-        .service-card li:before {
-            content: "✔";
-            position: absolute;
-            left: 0;
-            color: #fff;
+        .gallery-bg {
+            font-size: 200px;
+            font-weight: 900;
+            text-align: center;
+            color: rgba(255,255,255,0.05);
+            letter-spacing: 20px;
+            padding: 50px 0;
+            user-select: none;
         }
         
-        .price {
-            margin-top: 20px;
-            font-size: 28px;
-            font-weight: 700;
-            color: #fff;
+        /* Projects Section */
+        .projects {
+            padding: 100px 50px;
+            background: #0a0a0a;
         }
         
-        .stages {
-            background: #1a1a1a;
+        .section-title {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
         }
         
-        .stages-grid {
+        .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
-        .stage {
-            text-align: center;
+        .project-card {
+            position: relative;
+            height: 500px;
+            background: #1a1a1a;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .project-card:hover .project-image {
+            opacity: 1;
+        }
+        
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
             padding: 30px;
-            background: #0a0a0a;
-            border: 1px solid #333;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
         }
         
-        .stage-number {
-            font-size: 48px;
-            font-weight: 700;
-            color: #444;
-            margin-bottom: 15px;
-        }
-        
-        .stage h3 {
-            font-size: 18px;
+        .project-title {
+            font-size: 24px;
             margin-bottom: 10px;
         }
         
-        .contact-form {
+        .project-details {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        /* Form Section */
+        .form-section {
+            padding: 100px 50px;
+            background: #000;
+        }
+        
+        .form-container {
             max-width: 600px;
             margin: 0 auto;
-            background: #1a1a1a;
-            padding: 50px;
-            border: 1px solid #333;
+        }
+        
+        .form-title {
+            font-size: 48px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         
-        .form-group input,
-        .form-group textarea {
+        .form-input {
             width: 100%;
-            padding: 15px;
-            background: #0a0a0a;
+            padding: 20px;
+            background: transparent;
             border: 1px solid #333;
             color: #fff;
             font-size: 16px;
+            transition: border-color 0.3s;
         }
         
-        .form-group input:focus,
-        .form-group textarea:focus {
+        .form-input:focus {
             outline: none;
             border-color: #666;
         }
         
-        footer {
-            background: #000;
-            padding: 30px 50px;
-            text-align: center;
-            color: #666;
-            border-top: 1px solid #222;
+        .submit-button {
+            padding: 20px 60px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-button:hover {
+            background: #fff;
+            color: #000;
         }
         
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 20px;
+            .main-logo {
+                font-size: 36px;
+                letter-spacing: 10px;
             }
             
-            nav {
+            .awards {
+                position: static;
+                transform: none;
                 flex-direction: column;
-                gap: 15px;
-                text-align: center;
+                margin-top: 50px;
             }
             
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
+            .project-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">LANSEYA</div>
-        <nav>
-            <a href="#main">Главная</a>
-            <a href="#services">Услуги</a>
-            <a href="#stages">Этапы</a>
-            <a href="#contact">Контакты</a>
-        </nav>
-        <div class="contact-buttons">
-            <div class="contact-btn">📧</div>
-            <div class="contact-btn">📱</div>
+        <div class="logo-top">
+            <div class="logo-icon">4Р</div>
+            <div class="logo-text">
+                <div>4 Решения</div>
+                <div style="font-size: 10px;">Строительная компания</div>
+            </div>
+        </div>
+        <div class="contact-icons">
+            <div class="icon-circle">✈</div>
+            <div class="icon-circle">📞</div>
+            <div class="icon-circle">☰</div>
         </div>
     </header>
 
-    <section class="hero" id="main">
-        <h1>Территория стиля и минимализма</h1>
-        <p>Мы поможем вам раскрыть ваш потенциал и создать проекты, которые будут отражать вашу уникальность и индивидуальность</p>
-        <div class="cta-buttons">
-            <a href="#services" class="btn btn-primary">Посмотреть услуги</a>
-            <a href="#contact" class="btn btn-secondary">Оставить заявку</a>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="main-logo">РЕШЕНИЯ</h1>
+            <p class="main-subtitle">Строительная компания</p>
+            <a href="#form" class="cta-button">Оставить заявку</a>
+            
+            <div class="hero-text">
+                <h2>Территория стиля и минимализма<br>для твоего дома и бизнеса</h2>
+                <p>Компании 4РЕШЕНИЯ поможет вам раскрыть ваш потенциал и создать проекты, которые будут отражать вашу уникальность и индивидуальность.</p>
+                <a href="#projects" class="link-button">Посмотреть работы</a>
+            </div>
         </div>
-    </section>
-
-    <section class="section" id="services">
-        <h2 class="section-title">Наши тарифы</h2>
-        <div class="services">
-            <div class="service-card">
-                <h3>Конструктор</h3>
-                <ul>
-                    <li>Поэтапное производство работ</li>
-                    <li>Индивидуальный расчет стоимости</li>
-                    <li>Гибкость в выборе</li>
-                    <li>Помощь в выборе материалов</li>
-                </ul>
-                <div class="price">По запросу</div>
+        
+        <div class="awards">
+            <div class="award">
+                <div class="award-icon"></div>
+                <div class="award-text">Best Renovation<br>Awards 2021</div>
             </div>
-
-            <div class="service-card">
-                <h3>Бизнес</h3>
-                <ul>
-                    <li>Полный цикл работ</li>
-                    <li>Подготовка стен под покраску</li>
-                    <li>Монтаж инженерной доски</li>
-                    <li>Натяжные потолки</li>
-                    <li>Улучшенная сантехника</li>
-                    <li>Технический надзор</li>
-                </ul>
-                <div class="price">от 36 500 ₽/м²</div>
+            <div class="award">
+                <div class="award-icon"></div>
+                <div class="award-text">Является<br>членом союза</div>
             </div>
-
-            <div class="service-card">
-                <h3>Комфорт</h3>
-                <ul>
-                    <li>Черновые работы</li>
-                    <li>Укладка ламината</li>
-                    <li>Натяжные потолки</li>
-                    <li>Подготовка под обои</li>
-                    <li>Монтаж плитки</li>
-                    <li>Базовая сантехника</li>
-                </ul>
-                <div class="price">от 26 500 ₽/м²</div>
+            <div class="award">
+                <div class="award-icon"></div>
+                <div class="award-text">Urban<br>Awards 2022</div>
             </div>
         </div>
     </section>
 
-    <section class="section stages" id="stages">
-        <h2 class="section-title">Этапы работ</h2>
-        <div class="stages-grid">
-            <div class="stage">
-                <div class="stage-number">01</div>
-                <h3>Звонок или заявка</h3>
+    <section class="gallery-section">
+        <div class="gallery-bg">GALLERY</div>
+    </section>
+
+    <section class="projects" id="projects">
+        <h2 class="section-title">Портфолио</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h3 class="project-title">Поклонная 9</h3>
+                    <p class="project-details">Премиум • 114м² • 45.500 ₽/м²</p>
+                </div>
             </div>
-            <div class="stage">
-                <div class="stage-number">02</div>
-                <h3>Выезд замерщика</h3>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800" alt="Project 2" class="project-image">
+                <div class="project-info">
+                    <h3 class="project-title">ЖК Манифест</h3>
+                    <p class="project-details">Бизнес • 86.6м² • 56000 ₽/м²</p>
+                </div>
             </div>
-            <div class="stage">
-                <div class="stage-number">03</div>
-                <h3>Составление сметы</h3>
-            </div>
-            <div class="stage">
-                <div class="stage-number">04</div>
-                <h3>Подписание договора</h3>
-            </div>
-            <div class="stage">
-                <div class="stage-number">05</div>
-                <h3>Производство работ</h3>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800" alt="Project 3" class="project-image">
+                <div class="project-info">
+                    <h3 class="project-title">Discovery Park</h3>
+                    <p class="project-details">Бизнес • 64м² • 58000 ₽/м²</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="contact">
-        <h2 class="section-title">Оставить заявку</h2>
-        <div class="contact-form">
+    <section class="form-section" id="form">
+        <div class="form-container">
+            <h2 class="form-title">Оставить заявку+</h2>
             <form>
                 <div class="form-group">
-                    <input type="text" placeholder="Ваше имя" required>
+                    <input type="text" class="form-input" placeholder="Ваше имя" required>
                 </div>
                 <div class="form-group">
-                    <input type="tel" placeholder="+7 (___) ___-__-__" required>
+                    <input type="tel" class="form-input" placeholder="+7 (000) 000-00-00" required>
                 </div>
-                <div class="form-group">
-                    <textarea rows="5" placeholder="Опишите ваш проект"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить заявку</button>
+                <button type="submit" class="submit-button">Отправить</button>
             </form>
         </div>
     </section>
-
-    <footer>
-        <p>&copy; 2026 Lanseya. Территория стиля и минимализма.</p>
-    </footer>
 </body>
 </html>
