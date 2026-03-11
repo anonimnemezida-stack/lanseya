@@ -6,129 +6,203 @@
     <title>4Solutions | Строительная компания</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
-        
-        .header-fixed {
-            position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
-            width: 95%; max-width: 1200px; height: 110px;
-            background: rgba(18, 18, 18, 0.95); border-radius: 100px;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 50px; z-index: 1000; border: 1px solid rgba(255,255,255,0.1);
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-color: #c5a059;
+            --secondary-bg: #111111;
         }
-        .logo img { height: 50px; }
-        .header-icons { display: flex; gap: 20px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: var(--bg-color); 
+            color: var(--text-color); 
+            overflow-x: hidden; 
+            -webkit-font-smoothing: antialiased; 
+        }
+
+        /* Header */
+        .header {
+            position: fixed; top: 20px; left: 0; width: 100%; z-index: 1000;
+            padding: 0 5%; pointer-events: none;
+        }
+        .header-inner {
+            max-width: 1400px; margin: 0 auto; 
+            display: flex; justify-content: space-between; align-items: center; 
+            pointer-events: auto;
+        }
+        .logo-wrap { display: flex; align-items: center; text-decoration: none; color: #fff; }
+        .logo-icon { height: 45px; margin-right: 15px; }
+        .logo-text { font-size: 1.5rem; font-weight: 900; line-height: 1; text-transform: uppercase; letter-spacing: 2px; }
+        .logo-text span { display: block; font-size: 0.6rem; font-weight: 400; letter-spacing: 1px; opacity: 0.7; margin-top: 5px; }
+
+        .nav-icons { display: flex; gap: 15px; }
         .icon-circle {
-            width: 65px; height: 65px; background: #fff; border-radius: 50%;
+            width: 55px; height: 55px; background: #fff; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            transition: 0.3s; cursor: pointer; text-decoration: none;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; text-decoration: none;
         }
         .icon-circle:hover { transform: scale(1.1); }
-        .icon-circle svg { width: 30px; height: 30px; fill: #000; }
-        
+        .icon-circle svg { width: 24px; height: 24px; fill: #000; }
+
+        /* Hero */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://4solutions.ru/images/tild3133-3162-4265-b131-316538393561__---1.jpg') center/cover;
+            height: 100vh; min-height: 700px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://4solutions.ru/images/tild3133-3162-4265-b131-316538393561__---1.jpg') center/cover;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; padding: 0 5%;
         }
-        .hero h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 25px; max-width: 1000px; text-transform: uppercase; }
-        .hero p { font-size: 1.2rem; max-width: 700px; margin-bottom: 50px; opacity: 0.9; line-height: 1.6; }
-        .btn-group { display: flex; gap: 25px; }
-        .btn { padding: 20px 45px; border-radius: 100px; text-decoration: none; text-transform: uppercase; font-weight: 700; transition: 0.3s; font-size: 0.9rem; letter-spacing: 1px; }
-        .btn-primary { background: #fff; color: #000; }
-        .btn-primary:hover { background: #eee; }
-        .btn-secondary { border: 1px solid #fff; color: #fff; }
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
-        
-        .projects { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
-        .section-title { font-size: 3rem; font-weight: 900; text-transform: uppercase; margin-bottom: 60px; text-align: center; }
-        .project-grid { display: grid; grid-template-columns: 1fr; gap: 80px; }
-        .project-card { border-radius: 60px; overflow: hidden; background: #111; display: flex; min-height: 550px; border: 1px solid rgba(255,255,255,0.05); }
-        .project-card.reverse { flex-direction: row-reverse; }
-        .project-img { flex: 1.5; overflow: hidden; }
-        .project-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
-        .project-card:hover .project-img img { transform: scale(1.08); }
-        .project-content { flex: 1; padding: 80px; display: flex; flex-direction: column; justify-content: center; position: relative; }
-        .project-tag { position: absolute; top: 40px; left: 80px; border: 1px solid rgba(255,255,255,0.3); padding: 8px 25px; border-radius: 30px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
-        .project-name { font-size: 3rem; font-weight: 700; margin-bottom: 25px; }
-        .project-desc { font-size: 1.1rem; opacity: 0.6; margin-bottom: 40px; line-height: 1.6; }
-        .project-meta { display: flex; gap: 50px; font-size: 1.1rem; }
-        .project-meta div span { display: block; opacity: 0.5; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
-        
+        .hero h1 { font-size: clamp(2rem, 6vw, 4.5rem); font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 30px; max-width: 1100px; }
+        .hero p { font-size: clamp(1rem, 2vw, 1.3rem); max-width: 800px; margin-bottom: 50px; opacity: 0.8; font-weight: 300; line-height: 1.6; }
+        .hero-btns { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 22px 50px; border-radius: 100px; font-weight: 700; text-transform: uppercase; text-decoration: none; transition: 0.3s; font-size: 0.85rem; letter-spacing: 1px; }
+        .btn-white { background: #fff; color: #000; }
+        .btn-white:hover { background: #e0e0e0; }
+        .btn-outline { border: 1px solid #fff; color: #fff; }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+        /* Projects Section */
+        .section { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 80px; position: relative; }
+        .section-header h2 { font-size: 3.5rem; font-weight: 900; text-transform: uppercase; }
+        .section-header::after { content: ''; display: block; width: 80px; height: 4px; background: var(--accent-color); margin: 20px auto 0; }
+
+        .project-block { margin-bottom: 100px; display: flex; gap: 60px; align-items: center; }
+        .project-block.reverse { flex-direction: row-reverse; }
+        .project-visual { flex: 1.4; border-radius: 40px; overflow: hidden; height: 550px; background: #222; }
+        .project-visual img { width: 100%; height: 100%; object-fit: cover; transition: 1s; }
+        .project-block:hover .project-visual img { transform: scale(1.05); }
+
+        .project-info { flex: 1; }
+        .project-label { display: inline-block; padding: 6px 20px; border: 1px solid var(--accent-color); color: var(--accent-color); border-radius: 100px; font-size: 0.7rem; font-weight: 700; margin-bottom: 25px; }
+        .project-title { font-size: 3rem; font-weight: 700; margin-bottom: 20px; }
+        .project-desc { font-size: 1.1rem; opacity: 0.6; line-height: 1.6; margin-bottom: 40px; }
+        .project-stats { display: flex; gap: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; }
+        .stat-item span { display: block; font-size: 0.8rem; opacity: 0.5; margin-bottom: 5px; text-transform: uppercase; }
+        .stat-item p { font-size: 1.3rem; font-weight: 600; }
+
+        /* Stages Section */
+        .stages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .stage-card { background: var(--secondary-bg); padding: 50px; border-radius: 30px; text-align: center; }
+        .stage-num { font-size: 4rem; font-weight: 900; opacity: 0.1; margin-bottom: -20px; }
+        .stage-title { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
+
         @media (max-width: 992px) {
-            .project-card, .project-card.reverse { flex-direction: column; height: auto; }
-            .project-content { padding: 40px; }
-            .project-tag { top: 20px; left: 40px; }
-            .hero h1 { font-size: 2.5rem; }
-            .header-fixed { padding: 0 25px; height: 80px; top: 15px; }
-            .icon-circle { width: 50px; height: 50px; }
-            .icon-circle svg { width: 22px; height: 22px; }
+            .project-block, .project-block.reverse { flex-direction: column; }
+            .project-visual { width: 100%; height: 400px; }
+            .header-inner { padding: 10px 0; }
+            .logo-text { font-size: 1.2rem; }
+            .icon-circle { width: 45px; height: 45px; }
         }
     </style>
 </head>
 <body>
-    <header class="header-fixed">
-        <div class="logo">
-            <img src="https://static.tildacdn.com/tild6130-3136-4139-a337-343036323439/4_.svg" alt="4Solutions Logo">
-        </div>
-        <div class="header-icons">
-            <a href="https://t.me/solutions2019" class="icon-circle" target="_blank">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.42-1.39-.89.03-.24.37-.49 1.02-.73 4-.1 4.74-2.67 5.74-10 6.15-3.11.26-3.11 1.01-3.11-.67 0-1.29.33-1.68.89-.39.56-.51 1.28-.32 1.95.22.75.91 2.22 1.01 2.41z"/></svg>
+
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo-wrap">
+                <img src="https://4solutions.ru/images/tild3164-3065-4235-b265-666336636665__4_.svg" alt="4Solutions" class="logo-icon">
+                <div class="logo-text">
+                    РЕШЕНИЯ
+                    <span>СТРОИТЕЛЬНАЯ КОМПАНИЯ</span>
+                </div>
             </a>
-            <a href="tel:+74955322617" class="icon-circle">
-                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            </a>
-            <a href="#" class="icon-circle">
-                <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-            </a>
+            <div class="nav-icons">
+                <a href="https://t.me/solutions2019" class="icon-circle">
+                    <svg viewBox="0 0 24 24" fill="#000"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                </a>
+                <div class="icon-circle">
+                    <svg viewBox="0 0 24 24" fill="#000"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                </div>
+            </div>
         </div>
     </header>
 
     <section class="hero">
         <h1>ТЕРРИТОРИЯ СТИЛЯ И МИНИМАЛИZМА ДЛЯ ТВОЕГО ДОМА И БИЗНЕСА</h1>
         <p>Компании 4РЕШЕНИЯ поможет вам раскрыть ваш потенциал и создать проекты, которые будут отражать вашу уникальность и индивидуальность.</p>
-        <div class="btn-group">
-            <a href="/portfolio" class="btn btn-primary">ПОСМОТРЕТЬ РАБОТЫ</a>
-            <a href="#formpopup" class="btn btn-secondary">Оставить заявку</a>
+        <div class="hero-btns">
+            <a href="#portfolio" class="btn btn-white">Посмотреть работы</a>
+            <a href="#contact" class="btn btn-outline">Оставить заявку</a>
         </div>
     </section>
 
-    <section class="projects">
-        <h2 class="section-title">Проекты</h2>
-        <div class="project-grid">
-            <!-- Project 1 -->
-            <div class="project-card">
-                <div class="project-img">
-                    <img src="https://static.tildacdn.com/tild3133-3162-4265-b131-316538393561/poklonnaya-9-premium.jpg" alt="ЖК Манифест">
-                </div>
-                <div class="project-content">
-                    <div class="project-tag">ПРЕМИУМ</div>
-                    <h3 class="project-name">ЖК Манифест</h3>
-                    <p class="project-desc">Капитальный ремонт в новостройке. Яркий пример того, как можно сделать эффектный интерьер и воплотить мечту заказчика в реальность.</p>
-                    <div class="project-meta">
-                        <div><span>Площадь:</span> 114м²</div>
-                        <div><span>Цена:</span> 45.500 ₽ м²</div>
+    <section class="section" id="portfolio">
+        <div class="section-header">
+            <h2>Проекты</h2>
+        </div>
+
+        <div class="project-block">
+            <div class="project-visual">
+                <img src="https://4solutions.ru/images/tild3532-6161-4564-b964-626535356461__---1.jpg" alt="ЖК Манифест">
+            </div>
+            <div class="project-info">
+                <span class="project-label">ПРЕМИУМ</span>
+                <h3 class="project-title">ЖК Манифест</h3>
+                <p class="project-desc">Капитальный ремонт в новостройке. Яркий пример того, как можно сделать эффектный интерьер и воплотить мечту заказчика в реальность.</p>
+                <div class="project-stats">
+                    <div class="stat-item">
+                        <span>Площадь</span>
+                        <p>114м²</p>
+                    </div>
+                    <div class="stat-item">
+                        <span>Цена</span>
+                        <p>45.500 ₽ м²</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Project 2 -->
-            <div class="project-card reverse">
-                <div class="project-img">
-                    <img src="https://static.tildacdn.com/tild3037-3330-4137-b062-636466646536/ap-2119.jpg" alt="Поклонная 9">
-                </div>
-                <div class="project-content">
-                    <div class="project-tag">БИЗНЕС</div>
-                    <h3 class="project-name">Поклонная 9 (ап.2119)</h3>
-                    <p class="project-desc">Дизайн и ремонт под ключ. Создание функционального и стильного пространства для современной жизни.</p>
-                    <div class="project-meta">
-                        <div><span>Площадь:</span> 64м²</div>
-                        <div><span>Цена:</span> 58.000 ₽ м²</div>
+        </div>
+
+        <div class="project-block reverse">
+            <div class="project-visual">
+                <img src="https://4solutions.ru/images/tild6439-6162-4235-b233-313636306562__---1.jpg" alt="Поклонная 9">
+            </div>
+            <div class="project-info">
+                <span class="project-label">БИЗНЕС</span>
+                <h3 class="project-title">Поклонная 9</h3>
+                <p class="project-desc">Дизайн и ремонт под ключ в одном из самых престижных жилых комплексов Москвы. Современный минимализм в каждой детали.</p>
+                <div class="project-stats">
+                    <div class="stat-item">
+                        <span>Площадь</span>
+                        <p>86.6м²</p>
+                    </div>
+                    <div class="stat-item">
+                        <span>Цена</span>
+                        <p>56 000 ₽ м²</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="section" style="background: var(--secondary-bg);">
+        <div class="section-header">
+            <h2>Этапы работ</h2>
+        </div>
+        <div class="stages-grid">
+            <div class="stage-card">
+                <div class="stage-num">01</div>
+                <h4 class="stage-title">Звонок или заявка</h4>
+                <p style="opacity: 0.6;">Обсуждаем ваши пожелания и назначаем встречу</p>
+            </div>
+            <div class="stage-card">
+                <div class="stage-num">02</div>
+                <h4 class="stage-title">Выезд замерщика</h4>
+                <p style="opacity: 0.6;">Точные замеры и консультация на объекте</p>
+            </div>
+            <div class="stage-card">
+                <div class="stage-num">03</div>
+                <h4 class="stage-title">Составление сметы</h4>
+                <p style="opacity: 0.6;">Прозрачный расчет всех этапов работ</p>
+            </div>
+            <div class="stage-card">
+                <div class="stage-num">04</div>
+                <h4 class="stage-title">Договор</h4>
+                <p style="opacity: 0.6;">Юридическая гарантия сроков и качества</p>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
